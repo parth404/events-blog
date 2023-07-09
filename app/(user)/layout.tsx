@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import "../globals.css";
 import { Inter } from "next/font/google";
-import Banner from "@/components/Banner";
+import Hero from "@/components/Hero";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg h-screen w-full bg-[url('http://assets.iceable.com/img/noise-transparent.png')] bg-repeat">
-          <Header />
-          <Banner />
-          {children}
-        </div>
+        <Header />
+        <Hero />
+        {children}
       </body>
     </html>
   );

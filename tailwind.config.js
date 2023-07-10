@@ -40,8 +40,8 @@ module.exports = {
         },
       },
       animation: {
-        marquee: "marquee 45s linear infinite",
-        marquee2: "marquee2 45s linear infinite",
+        marquee: "marquee 35s linear infinite",
+        marquee2: "marquee2 35s linear infinite",
       },
     },
     plugins: [],

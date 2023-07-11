@@ -8,11 +8,6 @@ const query = groq`*[_type=='events']{
 
 export default async function HomePage() {
   const events = await client.fetch(query);
-  // events.map((event: string) => (
-  //   <div className="mx-auto text-center text-4xl text-white">
-  //     <h1>{event}</h1>
-  //   </div>
-  // ));
   return (
     <div>
       <EventList events={events} />

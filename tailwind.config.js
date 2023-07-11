@@ -44,6 +44,6 @@ module.exports = {
         marquee2: "marquee2 35s linear infinite",
       },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/line-clamp")],
   },
 };

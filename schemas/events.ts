@@ -16,12 +16,29 @@ const events = {
       // ],
     },
     {
+      name: "description",
+      title: "Description",
+      type: "string",
+      // validation: (rule) => [
+      //   rule
+      //     .required()
+      //     .min(10)
+      //     .error("A title of min. 10 characters is required"),
+      //   rule.max(50).warning("Shorter titles are usually better"),
+      // ],
+    },
+    {
       name: "date",
       title: "Date",
       type: "date",
       options: {
         dateFormat: "DD-MM-YY",
       },
+    },
+    {
+      name: "venue",
+      title: "Venue",
+      type: "string",
     },
     {
       name: "slug",

@@ -11,6 +11,9 @@ interface Event extends Base {
   hero_image: Image;
   slug: Slug;
   title: string;
+  date: string;
+  venue: string;
+  description: string;
   image1: Image;
   image2: Image;
   image3: Image;
@@ -57,6 +60,11 @@ interface Image3 {
 }
 
 interface Title {
+  _type: "string";
+  current: string;
+}
+
+interface Description {
   _type: "string";
   current: string;
 }

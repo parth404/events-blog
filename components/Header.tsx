@@ -14,34 +14,35 @@ function Header() {
 
   return (
     <header>
-      <div className="relative flex justify-between items-center h-20 max-w-[1920px] mx-auto uppercase z-50">
-        <div>
-          <Link className="fixed top-0 flex items-center m-4" href="/">
+      <div className="fixed top-0 flex justify-between items-center h-14 w-full max-w-[1920px] mx-auto uppercase z-50 md:mix-blend-difference">
+        <div className=" text-white">
+          <Link className="flex items-center m-4" href="/">
             <Image
-              className="rounded-full mix-blend-difference"
+              className="rounded-full"
               src="/OWLNOBG.png"
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               alt="logo"
             />
-            <h1 className="px-2 text-2xl w-full font-bold text-white mix-blend-difference">
-              FAT OWL.
-            </h1>
+            <h1 className="px-2 text-xl w-full font-bold">FAT OWL.</h1>
           </Link>
         </div>
         <div>
-          <ul className="hidden fixed top-0 right-2 items-center m-4 md:flex text-white">
+          <ul className="hidden right-2 items-center m-4 md:flex text-white">
             <li className="p-4">Events</li>
             <li className="p-4">Gallery</li>
             <li className="p-4">About</li>
             <li className="p-4">Contact</li>
           </ul>
         </div>
-        <div onClick={handleNav} className="block md:hidden z-50">
+        <div
+          onClick={handleNav}
+          className="block md:hidden z-50 mix-blend-difference"
+        >
           {nav ? (
-            <XMarkIcon className="h-6 w-6 text-[#F7AB0A] mr-2" />
+            <XMarkIcon className="h-6 w-6 text-white mr-2" />
           ) : (
-            <Bars3Icon className="h-6 w-6 text-[#F7AB0A] mr-2" />
+            <Bars3Icon className="h-6 w-6 text-white mr-2" />
           )}
         </div>
         <div
@@ -60,9 +61,7 @@ function Header() {
                 height={50}
                 alt="logo"
               />
-              <h1 className="text-2xl w-full font-bold text-[#f7ab0a]">
-                FAT OWL.
-              </h1>
+              <h1 className="text-2xl w-full font-bold text-white">FAT OWL.</h1>
             </Link>
             <ul className="uppercase p-4 text-white">
               <li className="p-4 border-b border-gray-600">Events</li>

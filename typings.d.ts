@@ -19,6 +19,11 @@ interface Event extends Base {
   image3: Image;
 }
 
+interface Info extends Base {
+  body: Block[];
+  hero_image: Image;
+}
+
 interface Slug {
   _type: "slug";
   current: string;

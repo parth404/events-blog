@@ -9,25 +9,13 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["DM Sans", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+      },
+      backgroundColor: {
+        cardbg: "#ffff",
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      bg: {
-        position: "fixed",
-        top: "-50%",
-        left: "-50%",
-        right: "-50%",
-        bottom: "-50%",
-        width: "200%",
-        height: "200vh",
-        background:
-          'transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0',
-        backgroundRepeat: "repeat",
-        opacity: " 0.9",
-        visibility: "visible",
+        cardgradient: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
       },
       keyframes: {
         marquee: {
@@ -38,10 +26,21 @@ module.exports = {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0%)" },
         },
+        marquee3: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+        marquee4: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         marquee: "marquee 35s linear infinite",
         marquee2: "marquee2 35s linear infinite",
+        marquee3: "marquee3 15s linear infinite",
+        marquee4: "marquee4 15s linear infinite",
+        bounce: "bounce 2s infinite",
       },
     },
     plugins: [require("@tailwindcss/line-clamp")],

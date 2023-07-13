@@ -6,8 +6,9 @@ import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion } from "./lib/sanity.client";
+// import { apiVersion } from "./lib/sanity.client";
 import events from "./schemas/events";
+import about from "./schemas/about";
 import StudioNavbar from "./components/StudioNavbar";
 import Logo from "./components/Logo";
 import { customTheme } from "./theme";
@@ -25,7 +26,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     // visionTool({ defaultApiVersion: apiVersion }),
   ],
-  schema: { types: [events] },
+  schema: { types: [events, about] },
   studio: {
     components: {
       logo: Logo,

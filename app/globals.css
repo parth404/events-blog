@@ -18,7 +18,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: black;
+  background: radial-gradient(
+    circle at 24.1% 68.8%,
+    rgb(50, 50, 50) 0%,
+    rgb(0, 0, 0) 99.4%
+  );
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
   /* background: transparent
@@ -37,4 +41,16 @@ body {
 .outline-title {
   text-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff,
     -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+}
+
+.mobile-title h2 {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.mobile-title h2:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #ffffff;
 }

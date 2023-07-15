@@ -9,17 +9,17 @@ type Props = {
 
 function EventList({ events }: Props) {
   return (
-    <div className="max-w-contentContainer px-5 mx-auto">
-      <h1 className="text-white font-poppins text-3xl md:text-6xl font-extrabold tracking-wider uppercase">
-        explore events
+    <div className="max-w-contentContainer px-5 py-10 mx-auto">
+      <h1 className="text-white pb-12 font-poppins text-3xl md:text-6xl font-extrabold tracking-wider uppercase">
+        events
       </h1>
-      <div className="pt-24 grid grid-cols-1 md:grid-cols-2 px-5 gap-10 gap-y-16 pb-24">
+      <div className="grid py-2 grid-cols-1 md:grid-cols-2 px-5 gap-10 gap-y-16 pb-24">
         {events.map((event) => (
           <ClientSideRoute
             key={event._id}
             route={`/events/${event.slug.current}`}
           >
-            <div className="flex flex-col group cursor-pointer backdrop-blur-2xl bg-white/5 drop-shadow-lg hover:scale-105 ease-in duration-150 shadow-xl shadow-black/30">
+            <div className="flex flex-col group cursor-pointer drop-shadow-lg hover:scale-105 ease-in duration-150">
               <div className="relative w-[full] h-80 hover:drop-shadow-xl group-hover:scale-105 transition-transform duration-1000 ease-out">
                 <Image
                   className="object-cover object-left lg:object-center"
@@ -46,7 +46,7 @@ function EventList({ events }: Props) {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 px-5 flex-1">
+              <div className="mt-5 px-5 flex-1 group-hover:backdrop-blur-none">
                 <p className="underline text-lg font-bold text-gray-100">
                   {event.title}
                 </p>

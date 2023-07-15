@@ -97,9 +97,9 @@ function Gallery({ gallery }: Props) {
   return (
     <section
       draggable="false"
-      className="min-h-screen min-w-screen relative px-5 mx-auto py-24 md:pb-40 md:px-10 xl:px-4 text-white font-poppins overflow-hidden"
+      className="py-12 min-h-[35rem] md:min-h-screen md:min-w-screen relative px-5 mx-auto md:py-24 md:pb-40 md:px-10 xl:px-4 text-white font-poppins overflow-hidden"
     >
-      <h2 className="md:mt-44 select-none text-[2.6rem]  md:text-6xl lg:text-7xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase">
+      <h2 className="md:mt-44 select-none text-3xl  md:text-6xl lg:text-7xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase">
         GALLERY
       </h2>
       <div className="select-none text-2xl pb-12 md:pb-24 md:text-4xl lg:text-6xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase">
@@ -115,7 +115,7 @@ function Gallery({ gallery }: Props) {
         id="image-track"
         data-mouse-down-at="0"
         data-prev-percentage="0"
-        className="mt-56 h-[screen] w-[350vmin] backdrop-blur-3xl absolute left-[10%] top-[50%] md:left-[50%] md:top-[20%]"
+        className="md:mt-56 h-[screen] w-[350vmin] backdrop-blur-3xl absolute left-[10%] top-[60%] md:left-[50%] md:top-[20%]"
         draggable="false"
       >
         {gallery.map((galleryItem) => (
@@ -126,7 +126,7 @@ function Gallery({ gallery }: Props) {
           >
             <Image
               src={urlFor(galleryItem.image).url()}
-              className="image object-cover object-center w-full h-full"
+              className="image object-cover object-center w-full h-full cursor-pointer"
               alt={galleryItem.alt}
               fill
               draggable="false"

@@ -7,27 +7,38 @@ type Props = {
 };
 
 function About({ about }: Props) {
-  return (
-    <div className="max-w-7xl mx-auto">
-      <div className="pt-24 grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
-        {about.map((info) => (
-          <div
-            key={info._id}
-            className="flex flex-col group cursor-pointer backdrop-blur-2xl bg-gray-100 md:rounded-2xl md:p-10 drop-shadow-lg hover:scale-105 ease-in duration-150"
-          >
-            <div className="relative w-[full] h-80 hover:drop-shadow-xl group-hover:scale-105 transition-transform duration-1000 ease-out">
+  return about.map((info) => (
+    <section className="min-h-screen relative px-5 max-w-contentContainer mx-auto py-10 md:py-40 md:px-10 xl:px-4 text-white font-poppins">
+      <h2 className="text-[2.6rem] pb-12 md:pb-0 md:text-7xl lg:text-9xl font-extrabold tracking-wide md:tracking-widest uppercase">
+        welcome TO FAT OWL!
+      </h2>
+      <h3 className="about-title ease-in-out text-6xl font-extrabold tracking-wider uppercase">
+        {info.subtitle}
+      </h3>
+      <div className="block md:flex gap-4 md:gap-20 md:mt-16">
+        <div className="md:w-1/2 py-12 md:text-xl tracking-wider">
+          <p className="py-2">{info.block1}</p>
+          <p className="py-2">{info.block2}</p>
+          <p className="py-2 font-extrabold text-3xl md:text-4xl">
+            {info.block3}
+          </p>
+        </div>
+        <div className="relative w-full lg:w-1/2 md:h-[33rem] group mt-12">
+          <div className="md:absolute w-full h-80 md:h-[36rem] -left-6 -top-6 rounded-lg">
+            <div className="w-full h-full relative z-20 flex pl-6 lg:pl-0">
               <Image
-                className="object-cover object-left lg:object-center"
+                className="rounded-lg object-cover h-full"
                 src={urlFor(info.hero_image).url()}
                 alt={info.hero_image.alt}
                 fill
               />
             </div>
           </div>
-        ))}
+          <div className="hidden md:inline-flex w-full h-[36rem] border-2 border-gray-400 shadow-gray-400 shadow-sm rounded-md group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-500"></div>
+        </div>
       </div>
-    </div>
-  );
+    </section>
+  ));
 }
 
 export default About;

@@ -9,14 +9,17 @@ type Props = {
 
 function EventList({ events }: Props) {
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="pt-24 grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
+    <div className="max-w-contentContainer px-5 mx-auto">
+      <h1 className="text-white font-poppins text-3xl md:text-6xl font-extrabold tracking-wider uppercase">
+        explore events
+      </h1>
+      <div className="pt-24 grid grid-cols-1 md:grid-cols-2 px-5 gap-10 gap-y-16 pb-24">
         {events.map((event) => (
           <ClientSideRoute
             key={event._id}
             route={`/events/${event.slug.current}`}
           >
-            <div className="flex flex-col group cursor-pointer backdrop-blur-2xl bg-gray-100 md:rounded-2xl md:p-10 drop-shadow-lg hover:scale-105 ease-in duration-150">
+            <div className="flex flex-col group cursor-pointer backdrop-blur-2xl bg-white/5 drop-shadow-lg hover:scale-105 ease-in duration-150 shadow-xl shadow-black/30">
               <div className="relative w-[full] h-80 hover:drop-shadow-xl group-hover:scale-105 transition-transform duration-1000 ease-out">
                 <Image
                   className="object-cover object-left lg:object-center"
@@ -44,13 +47,15 @@ function EventList({ events }: Props) {
                 </div>
               </div>
               <div className="mt-5 px-5 flex-1">
-                <p className="underline text-lg font-bold">{event.title}</p>
-                <p className="line-clamp-2 text-gray-800">
+                <p className="underline text-lg font-bold text-gray-100">
+                  {event.title}
+                </p>
+                <p className="line-clamp-2 text-gray-300">
                   {event.description}
                 </p>
               </div>
 
-              <p className="px-5 my-5 font-bold text-gray-700 flex items-center group-hover:underline">
+              <p className="px-5 my-5 font-bold text-gray-100 flex items-center group-hover:underline">
                 Read More
                 <ArrowLongRightIcon className="ml-2 h-4 w-4" />
               </p>

@@ -20,8 +20,23 @@ interface Event extends Base {
 }
 
 interface Info extends Base {
-  body: Block[];
+  title: string;
+  subtitle: string;
+  block1: string;
+  block2: string;
+  block3: string;
+  alt: string;
   hero_image: Image;
+}
+
+interface Gallery extends Base {
+  alt: string;
+  image: Image;
+}
+
+interface galleryItem extends Base {
+  alt: string;
+  image: Image;
 }
 
 interface Slug {

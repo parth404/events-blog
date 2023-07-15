@@ -9,6 +9,7 @@ import { deskTool } from "sanity/desk";
 // import { apiVersion } from "./lib/sanity.client";
 import events from "./schemas/events";
 import about from "./schemas/about";
+import gallery from "./schemas/gallery";
 import StudioNavbar from "./components/StudioNavbar";
 import Logo from "./components/Logo";
 import { customTheme } from "./theme";
@@ -26,7 +27,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     // visionTool({ defaultApiVersion: apiVersion }),
   ],
-  schema: { types: [events, about] },
+  schema: { types: [events, about, gallery] },
   studio: {
     components: {
       logo: Logo,

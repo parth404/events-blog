@@ -17,6 +17,12 @@ module.exports = {
       backgroundImage: {
         cardgradient: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
       },
+      maxWidth: {
+        container: "1440px",
+        contentContainer: "1140px",
+        containerSmall: "1024px",
+        containerxs: "768px",
+      },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },

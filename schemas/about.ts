@@ -17,10 +17,29 @@ const about = {
       ],
     },
     {
-      name: "content",
-      title: "Content",
-      type: "array",
-      of: [{ type: "block" }],
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
+    {
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
+    },
+    {
+      name: "block1",
+      title: "Block1",
+      type: "string",
+    },
+    {
+      name: "block2",
+      title: "Block2",
+      type: "string",
+    },
+    {
+      name: "block3",
+      title: "Block3",
+      type: "string",
     },
   ],
 };

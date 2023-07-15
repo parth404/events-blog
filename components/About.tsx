@@ -27,14 +27,14 @@ function About({ about }: Props) {
           <div className="md:absolute w-full h-80 md:h-[36rem] -left-6 -top-6 rounded-lg">
             <div className="w-full h-full relative z-20 flex pl-6 lg:pl-0">
               <Image
-                className="rounded-lg object-cover h-full"
+                className="object-cover h-full"
                 src={urlFor(info.hero_image).url()}
                 alt={info.hero_image.alt}
                 fill
               />
             </div>
           </div>
-          <div className="hidden md:inline-flex w-full h-[36rem] border-2 border-gray-400 shadow-gray-400 shadow-sm rounded-md group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-500"></div>
+          <div className="hidden md:inline-flex w-full h-[36rem] border-2 border-gray-400 shadow-gray-400 shadow-sm group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-500"></div>
         </div>
       </div>
     </section>

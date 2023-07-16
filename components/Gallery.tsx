@@ -1,9 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import urlFor from "@/lib/urlFor";
 import Image from "next/image";
-import { ChevronDoubleLeftIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronDoubleLeftIcon,
+  XMarkIcon,
+  ArrowLongRightIcon,
+  ArrowLongLeftIcon,
+} from "@heroicons/react/24/solid";
 
 // let track = null;
 
@@ -12,6 +17,12 @@ type Props = {
 };
 
 function Gallery({ gallery }: Props) {
+  const [image, setImage] = useState("/");
+  const [popUp, setPopUp] = useState(false);
+  const [imageKey, setImageKey] = useState(0);
+  const [showRight, setShowRight] = useState(false);
+  const [showLeft, setShowLeft] = useState(false);
+
   useEffect(() => {
     if (typeof document !== "undefined") {
       const track = document.getElementById("image-track");
@@ -94,6 +105,51 @@ function Gallery({ gallery }: Props) {
     }
   }, []);
 
+  useEffect(() => {
+    if (imageKey > 0) {
+      setShowLeft(true);
+    } else {
+      setShowLeft(false);
+    }
+
+    if (imageKey < gallery.length - 1) {
+      setShowRight(true);
+    } else {
+      setShowRight(false);
+    }
+  }, [imageKey, setShowLeft, setShowRight]);
+
+  const clickHandler = (key: number, image: string) => {
+    console.log("ok", key);
+    setImage(image);
+    setImageKey(key);
+    setPopUp(true);
+  };
+
+  const closePopUp = () => {
+    console.log("close");
+    setPopUp(false);
+    setImage("/");
+  };
+
+  const slideHandler = (name: string) => {
+    let key = imageKey;
+    console.log("hit", key);
+    if (
+      (name === "right" && key === gallery.length - 1) ||
+      (name === "left" && key === 0)
+    ) {
+      setPopUp(false);
+      return;
+    } else if (name === "right") {
+      setImage(urlFor(gallery[key + 1].image).url());
+      setImageKey(key + 1);
+    } else if (name === "left") {
+      setImage(urlFor(gallery[key - 1].image).url());
+      setImageKey(key - 1);
+    }
+  };
+
   return (
     <section
       draggable="false"
@@ -118,22 +174,67 @@ function Gallery({ gallery }: Props) {
         className="md:mt-56 h-[screen] w-[350vmin] backdrop-blur-3xl absolute left-[10%] top-[60%] md:left-[50%] md:top-[20%]"
         draggable="false"
       >
-        {gallery.map((galleryItem) => (
-          <div
-            key={galleryItem._id}
-            className="relative w-[60vmin] h-[76vmin] md:w-[46vmin] md:h-[76vmin] group hover:drop-shadow-xl hover:scale-105 transition-transform duration-500 ease-out"
-            draggable="false"
-          >
-            <Image
-              src={urlFor(galleryItem.image).url()}
-              className="image object-cover object-center w-full h-full cursor-pointer"
-              alt={galleryItem.alt}
-              fill
+        {gallery.map((galleryItem, key) => {
+          // console.log(
+          //   gallery.findIndex(
+          //     (obj) => obj._id === "06919367-6f55-4e3f-ba0a-d4a8d65bd9eb"
+          //   )
+          // );
+          const url = urlFor(galleryItem.image).url();
+          return (
+            <div
+              key={galleryItem._id}
+              className="relative w-[60vmin] h-[76vmin] md:w-[46vmin] md:h-[76vmin] group hover:drop-shadow-xl hover:scale-105 transition-transform duration-500 ease-out"
               draggable="false"
-            />
-          </div>
-        ))}
+              onClick={() => clickHandler(key, url)}
+            >
+              <Image
+                src={url}
+                className="image object-none md:object-cover object-center w-full h-full cursor-pointer"
+                alt={galleryItem.alt}
+                fill
+                draggable="false"
+              />
+            </div>
+          );
+        })}
       </div>
+      {popUp ? (
+        <div
+          className="fixed h-full w-full top-0 left-0 z-50 bg-black overflow-hidden"
+          draggable={false}
+        >
+          <div className="absolute top-[20%] left-[5%] md:top-[10%] md:left-[10%] w-[90%] h-[50%] md:w-[80%] md:h-[80%] select-none">
+            <Image
+              src={image}
+              alt={"pop"}
+              className="object-cover object-center "
+              fill
+            />
+            <XMarkIcon
+              width={30}
+              className="absolute -right-4 -top-4 cursor-pointer  text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
+              onClick={closePopUp}
+            />
+            {showRight && (
+              <ArrowLongRightIcon
+                width={40}
+                className="absolute top-[50%] -right-6 cursor-pointer text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
+                onClick={() => slideHandler("right")}
+              />
+            )}
+            {showLeft && (
+              <ArrowLongLeftIcon
+                width={40}
+                className="absolute top-[50%] -left-6 cursor-pointer text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
+                onClick={() => slideHandler("left")}
+              />
+            )}
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 }

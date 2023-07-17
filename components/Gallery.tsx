@@ -120,21 +120,18 @@ function Gallery({ gallery }: Props) {
   }, [imageKey, setShowLeft, setShowRight]);
 
   const clickHandler = (key: number, image: string) => {
-    console.log("ok", key);
     setImage(image);
     setImageKey(key);
     setPopUp(true);
   };
 
   const closePopUp = () => {
-    console.log("close");
     setPopUp(false);
     setImage("/");
   };
 
   const slideHandler = (name: string) => {
     let key = imageKey;
-    console.log("hit", key);
     if (
       (name === "right" && key === gallery.length - 1) ||
       (name === "left" && key === 0)
@@ -175,11 +172,6 @@ function Gallery({ gallery }: Props) {
         draggable="false"
       >
         {gallery.map((galleryItem, key) => {
-          // console.log(
-          //   gallery.findIndex(
-          //     (obj) => obj._id === "06919367-6f55-4e3f-ba0a-d4a8d65bd9eb"
-          //   )
-          // );
           const url = urlFor(galleryItem.image).url();
           return (
             <div
@@ -207,7 +199,7 @@ function Gallery({ gallery }: Props) {
           <div className="absolute top-[20%] left-[5%] md:top-[10%] md:left-[10%] w-[90%] h-[50%] md:w-[80%] md:h-[80%] select-none">
             <Image
               src={image}
-              alt={"pop"}
+              alt="pop"
               className="object-cover object-center "
               fill
             />

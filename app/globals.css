@@ -23,6 +23,7 @@ body {
     rgb(31, 31, 31) 0%,
     rgb(0, 0, 0) 100%
   );
+  background-repeat: no-repeat;
   /* background: #141414; */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;

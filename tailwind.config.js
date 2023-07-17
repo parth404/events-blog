@@ -13,9 +13,12 @@ module.exports = {
       },
       backgroundColor: {
         cardbg: "#ffff",
+        body: "#141414",
       },
       backgroundImage: {
         cardgradient: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
+        bodygradient:
+          "radial-gradient(circle at 24.1% 68.8%, rgb(31, 31, 31) 0%, rgb(0, 0, 0) 100%)",
       },
       maxWidth: {
         container: "1440px",

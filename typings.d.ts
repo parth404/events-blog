@@ -6,7 +6,7 @@ type Base = {
   _updatedAt: string;
 };
 
-interface Event extends Base {
+interface Post extends Base {
   body: Block[];
   hero_image: Image;
   slug: Slug;
@@ -17,6 +17,7 @@ interface Event extends Base {
   image1: Image;
   image2: Image;
   image3: Image;
+  alt: string;
 }
 
 interface Info extends Base {

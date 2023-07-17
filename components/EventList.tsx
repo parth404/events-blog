@@ -4,7 +4,7 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import ClientSideRoute from "./ClientSideRoute";
 
 type Props = {
-  events: Event[];
+  events: Post[];
 };
 
 function EventList({ events }: Props) {

@@ -3,6 +3,7 @@ import { groq } from "next-sanity";
 import EventList from "@/components/EventList";
 import About from "@/components/About";
 import Gallery from "@/components/Gallery";
+import Hero from "@/components/Hero";
 
 const query = groq`*[_type=='events']{
   ...,
@@ -21,6 +22,7 @@ export default async function HomePage() {
   const gallery = await client.fetch(imageQuery);
   return (
     <div>
+      <Hero />
       <About about={about} />
       <Gallery gallery={gallery} />
       <EventList events={events} />

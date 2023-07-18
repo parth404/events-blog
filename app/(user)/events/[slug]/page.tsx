@@ -2,6 +2,8 @@ import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import urlFor from "@/lib/urlFor";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "@/components/RichTextComponents";
 
 type Props = {
   params: {
@@ -29,7 +31,7 @@ async function Events({ params: { slug } }: Props) {
               fill
             />
           </div>
-          <section className=" p-3 bg-black/20 w-full text-white z-10 backdrop-blur-sm backdrop-brightness-75">
+          <section className=" p-5 md:p-8 bg-black/20 w-full text-white z-10 backdrop-blur-sm backdrop-brightness-75">
             <div className="flex flex-col md:flex-row my-5 md:my-24 justify-between gap-y-3 md:gap-y-5">
               <div>
                 <h1 className="text-xl md:text-4xl font-extrabold font-poppins capitalize md:pb-4">
@@ -44,6 +46,7 @@ async function Events({ params: { slug } }: Props) {
           </section>
         </div>
       </section>
+      <PortableText value={event.content} components={RichTextComponents} />
     </article>
   );
 }

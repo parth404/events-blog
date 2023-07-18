@@ -7,16 +7,13 @@ type Base = {
 };
 
 interface Post extends Base {
-  body: Block[];
+  content: Block[];
   hero_image: Image;
   slug: Slug;
   title: string;
   date: string;
   venue: string;
   description: string;
-  image1: Image;
-  image2: Image;
-  image3: Image;
   alt: string;
 }
 
@@ -61,21 +58,6 @@ interface span {
 }
 
 interface hero_image {
-  _type: "image";
-  asset: Reference;
-}
-
-interface Image1 {
-  _type: "image";
-  asset: Reference;
-}
-
-interface Image2 {
-  _type: "image";
-  asset: Reference;
-}
-
-interface Image3 {
   _type: "image";
   asset: Reference;
 }

@@ -65,49 +65,10 @@ const events = {
       ],
     },
     {
-      name: "image_1",
-      title: "Image 1",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
-      ],
-    },
-    {
-      name: "image_2",
-      title: "Image 2",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
-      ],
-    },
-    {
-      name: "image_3",
-      title: "Image 3",
-      type: "image",
-      options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
-      ],
-    },
-    {
       name: "content",
       title: "Content",
       type: "array",
-      of: [{ type: "block" }],
+      of: [{ type: "block" }, { type: "image" }],
     },
   ],
 };

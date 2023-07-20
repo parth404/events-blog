@@ -9,8 +9,12 @@ type Props = {
 
 function EventList({ events }: Props) {
   return (
-    <div className="max-w-contentContainer px-5 py-10 md:pt-0 mx-auto">
-      <h1 className="text-white pb-12 font-poppins text-3xl md:text-6xl font-extrabold tracking-wider uppercase">
+    <div
+      id="events"
+      className="max-w-contentContainer px-5 py-10 md:pt-24 mx-auto select-none"
+      draggable={false}
+    >
+      <h1 className="text-white py-12 font-poppins text-3xl md:text-6xl font-extrabold tracking-wider uppercase">
         events
       </h1>
       <div className="grid py-2 grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24">

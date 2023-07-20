@@ -8,15 +8,19 @@ type Props = {
 
 function About({ about }: Props) {
   return about.map((info) => (
-    <section className="min-h-screen relative px-5 max-w-contentContainer mx-auto py-10 md:py-40 md:px-10 xl:px-4 text-white font-poppins">
-      <h2 className="text-[2.6rem] pb-12 md:pb-0 md:text-7xl lg:text-9xl font-extrabold tracking-wide md:tracking-widest uppercase">
+    <section
+      id="about"
+      className="min-h-screen relative px-5 max-w-contentContainer mx-auto py-10 md:py-40 md:px-10 xl:px-4 text-white font-poppins"
+      draggable={false}
+    >
+      <h2 className="text-[2.6rem] pb-12 md:pb-0 md:text-7xl lg:text-9xl font-extrabold tracking-wide md:tracking-widest uppercase select-none">
         welcome TO FAT OWL!
       </h2>
-      <h3 className="about-title ease-in-out text-6xl font-extrabold tracking-wider uppercase">
+      <h3 className="about-title ease-in-out text-6xl font-extrabold tracking-wider uppercase select-none">
         {info.subtitle}
       </h3>
       <div className="block md:flex gap-4 md:gap-20 md:mt-16">
-        <div className="md:w-1/2 py-12 md:text-xl tracking-wider">
+        <div className="md:w-1/2 py-12 md:text-xl tracking-wider select-none">
           <p className="py-2">{info.block1}</p>
           <p className="py-2">{info.block2}</p>
           <p className="py-2 font-extrabold text-3xl md:text-4xl">

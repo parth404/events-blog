@@ -20,7 +20,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: radial-gradient(
     circle at 24.1% 68.8%,
-    rgb(31, 31, 31) 0%,
+    rgb(15, 15, 15) 0%,
     rgb(0, 0, 0) 100%
   );
   background-repeat: no-repeat;

@@ -1,3 +1,12 @@
+type Object = {
+  title: string;
+};
+
+interface SlugData {
+  title: string;
+  slug: string;
+}
+
 type Base = {
   _createdAt: string;
   _id: string;
@@ -15,6 +24,8 @@ interface Post extends Base {
   venue: string;
   description: string;
   alt: string;
+  next: SlugData;
+  prev: SlugData;
 }
 
 interface Info extends Base {
@@ -50,7 +61,7 @@ interface Block {
   style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
 }
 
-interface span {
+interface Span {
   _key: string;
   _type: "span";
   marks: string[];
@@ -60,6 +71,11 @@ interface span {
 interface hero_image {
   _type: "image";
   asset: Reference;
+}
+
+interface Reference {
+  _ref: "string";
+  _type: "reference";
 }
 
 interface Title {

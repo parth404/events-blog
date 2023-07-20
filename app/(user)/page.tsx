@@ -4,6 +4,7 @@ import EventList from "@/components/EventList";
 import About from "@/components/About";
 import Gallery from "@/components/Gallery";
 import Hero from "@/components/Hero";
+import Contact from "@/components/Contact";
 
 const query = groq`*[_type=='events']{
   ...,
@@ -26,6 +27,7 @@ export default async function HomePage() {
       <About about={about} />
       <Gallery gallery={gallery} />
       <EventList events={events} />
+      <Contact />
     </div>
   );
 }

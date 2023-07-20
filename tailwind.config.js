@@ -26,6 +26,15 @@ module.exports = {
         containerSmall: "1024px",
         containerxs: "768px",
       },
+      transition: {
+        opacity: {
+          "transition-property": "transform",
+          display: "0.5s",
+          opacity: "0.5s",
+          "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "transition-duration": "150ms",
+        },
+      },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },

@@ -32,8 +32,8 @@ function Gallery({ gallery }: Props) {
         return;
       }
 
-      const handleOnDown = (e) => {
-        track.dataset.mouseDownAt = e.clientX;
+      const handleOnDown = (e: MouseEvent) => {
+        track.dataset.mouseDownAt = e.clientX.toString();
       };
 
       const handleOnUp = () => {
@@ -41,17 +41,18 @@ function Gallery({ gallery }: Props) {
         track.dataset.prevPercentage = track.dataset.percentage;
       };
 
-      const handleOnMove = (e) => {
+      const handleOnMove = (e: MouseEvent) => {
         if (!track || track.dataset.mouseDownAt === "0") return;
 
-        const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+        const mouseDelta =
+            parseFloat(track.dataset.mouseDownAt ?? "0") - e.clientX,
           maxDelta = window.innerWidth / 2;
 
         let percentage = (mouseDelta / maxDelta) * -100;
         percentage = isNaN(percentage) ? 0 : percentage;
 
         const nextPercentageUnconstrained =
-            parseFloat(track.dataset.prevPercentage) + percentage,
+            parseFloat(track.dataset.prevPercentage ?? "0") + percentage,
           nextPercentage = Math.max(
             Math.min(nextPercentageUnconstrained, 0),
             -100
@@ -149,10 +150,14 @@ function Gallery({ gallery }: Props) {
 
   return (
     <section
+      id="gallery"
       draggable="false"
-      className="py-12 min-h-[35rem] md:min-h-screen md:min-w-screen relative px-5 mx-auto md:py-24 md:pb-40 md:px-10 xl:px-4 text-white font-poppins overflow-hidden"
+      className="bg-black pt-12 min-h-[35rem] md:min-h-screen md:min-w-screen relative px-5 mx-auto md:py-24 md:px-10 xl:px-4 text-white font-poppins overflow-hidden"
     >
-      <h2 className="md:mt-44 select-none text-3xl  md:text-6xl lg:text-7xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase">
+      <h2
+        id="gallery"
+        className="md:mt-72 select-none text-3xl  md:text-6xl lg:text-7xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase"
+      >
         GALLERY
       </h2>
       <div className="select-none text-2xl pb-12 md:pb-24 md:text-4xl lg:text-6xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase">
@@ -168,7 +173,7 @@ function Gallery({ gallery }: Props) {
         id="image-track"
         data-mouse-down-at="0"
         data-prev-percentage="0"
-        className="md:mt-56 h-[screen] w-[350vmin] backdrop-blur-3xl absolute left-[10%] top-[60%] md:left-[50%] md:top-[20%]"
+        className="md:mt-56 h-[screen] w-[350vmin] backdrop-blur-3xl absolute left-[10%] top-[60%] md:left-[50%] md:top-[30%] md:pb-12"
         draggable="false"
       >
         {gallery.map((galleryItem, key) => {
@@ -191,42 +196,46 @@ function Gallery({ gallery }: Props) {
           );
         })}
       </div>
-      {popUp ? (
+
+      <div
+        id="popover"
+        className={
+          popUp
+            ? `fixed opacity-1 transition-opacity ease-in-out duration-500 h-screen w-screen top-0 left-0 z-50 backdrop-blur-3xl backdrop-brightness-[20%] overflow-hidden`
+            : `invisible opacity-0`
+        }
+        draggable={false}
+      >
         <div
-          className="fixed h-full w-full top-0 left-0 z-50 bg-black overflow-hidden"
-          draggable={false}
+          className={`absolute top-[20%] left-[5%] md:top-[10%] md:left-[10%] w-[90%] h-[50%] md:w-[80%] md:h-[80%] select-none`}
         >
-          <div className="absolute top-[20%] left-[5%] md:top-[10%] md:left-[10%] w-[90%] h-[50%] md:w-[80%] md:h-[80%] select-none">
-            <Image
-              src={image}
-              alt="pop"
-              className="object-cover object-center "
-              fill
+          <Image
+            src={image}
+            alt="pop"
+            className="object-cover object-center "
+            fill
+          />
+          <XMarkIcon
+            width={30}
+            className="absolute -right-4 -top-4 cursor-pointer  text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
+            onClick={closePopUp}
+          />
+          {showRight && (
+            <ArrowLongRightIcon
+              width={40}
+              className="absolute top-[50%] -right-6 cursor-pointer text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
+              onClick={() => slideHandler("right")}
             />
-            <XMarkIcon
-              width={30}
-              className="absolute -right-4 -top-4 cursor-pointer  text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
-              onClick={closePopUp}
+          )}
+          {showLeft && (
+            <ArrowLongLeftIcon
+              width={40}
+              className="absolute top-[50%] -left-6 cursor-pointer text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
+              onClick={() => slideHandler("left")}
             />
-            {showRight && (
-              <ArrowLongRightIcon
-                width={40}
-                className="absolute top-[50%] -right-6 cursor-pointer text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
-                onClick={() => slideHandler("right")}
-              />
-            )}
-            {showLeft && (
-              <ArrowLongLeftIcon
-                width={40}
-                className="absolute top-[50%] -left-6 cursor-pointer text-gray-400 hover:text-white hover:scale-125 transition-transform duration-500"
-                onClick={() => slideHandler("left")}
-              />
-            )}
-          </div>
+          )}
         </div>
-      ) : (
-        <></>
-      )}
+      </div>
     </section>
   );
 }

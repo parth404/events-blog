@@ -29,10 +29,18 @@ function Header() {
         </div>
         <div>
           <ul className="hidden right-2 items-center m-4 md:flex text-white">
-            <li className="p-4">Events</li>
-            <li className="p-4">Gallery</li>
-            <li className="p-4">About</li>
-            <li className="p-4">Contact</li>
+            <a href="/#about">
+              <li className="p-4">About</li>
+            </a>
+            <a href="/#gallery">
+              <li className="p-4">Gallery</li>
+            </a>
+            <a href="/#events">
+              <li className="p-4">Events</li>
+            </a>
+            <a href="/#contact">
+              <li className="p-4">Contact</li>
+            </a>
           </ul>
         </div>
         <div

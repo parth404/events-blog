@@ -5,9 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Fat Owl DJ Events",
-  description:
-    "Fat Owl DJ Events, Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+  title: "Technodelic",
+  description: "Technodelic, music events company.",
 };
 
 export default function RootLayout({

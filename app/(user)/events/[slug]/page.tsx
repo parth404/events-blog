@@ -9,6 +9,7 @@ import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
 } from "@heroicons/react/24/solid";
+import Footer from "@/components/Footer";
 
 type Props = {
   params: {
@@ -20,10 +21,10 @@ async function Events({ params: { slug } }: Props) {
   const query = groq`
     *[_type=='events' && slug.current == $slug][0]
     {...,
-    "prev": *[_type == 'events' && !(_id in path('events.**')) && _createdAt > ^._createdAt][0]{
+    "prev": *[_type == 'events' && !(_id in path('events.**')) && date > ^.date]| order(date asc)[0]{
       "slug": slug.current, title
     },
-    "next": *[_type == 'events' && !(_id in path('events.**')) && _createdAt < ^._createdAt][0]{
+    "next": *[_type == 'events' && !(_id in path('events.**')) && date < ^.date]| order(date desc)[0]{
       "slug": slug.current, title
     },
     }
@@ -31,7 +32,6 @@ async function Events({ params: { slug } }: Props) {
 
   const event: Post = await client.fetch(query, { slug });
 
-  // console.log(event.next.title, event.prev.title);
   return (
     <div className="w-full bg-black select-none">
       <article className="px-4 py-28 h-full md:max-w-contentContainer mx-auto text-[#c7c7c7] font-poppins">
@@ -63,13 +63,13 @@ async function Events({ params: { slug } }: Props) {
           </div>
         </section>
         <PortableText value={event.content} components={RichTextComponents} />
-        <div className="flex w-full justify-between flex-row mt-20 text-[#c7c7c7] tracking-wide uppercase font-poppins md:text-lg">
+        <div className="flex w-full gap-6 underline justify-between flex-row mt-20 text-[#c7c7c7] text-xs tracking-wide uppercase font-poppins md:text-lg">
           {event.prev && (
             <ClientSideRoute
               key={event._id}
               route={`/events/${event.prev.slug}`}
             >
-              <div className="flex gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500">
+              <div className="flex max-w-36 gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500">
                 <ArrowLongLeftIcon width={36} />
                 <span>{event.prev.title}</span>
               </div>
@@ -80,7 +80,7 @@ async function Events({ params: { slug } }: Props) {
               key={event._id}
               route={`/events/${event.next.slug}`}
             >
-              <div className="flex gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500 ">
+              <div className="flex max-w-36 gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500 ">
                 <span>{event.next.title}</span>
                 <ArrowLongRightIcon width={36} />
               </div>
@@ -88,6 +88,7 @@ async function Events({ params: { slug } }: Props) {
           )}
         </div>
       </article>
+      <Footer />
     </div>
   );
 }

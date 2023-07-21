@@ -13,8 +13,8 @@ function About({ about }: Props) {
       className="min-h-screen relative px-5 max-w-contentContainer mx-auto py-10 md:py-40 md:px-10 xl:px-4 text-white font-poppins"
       draggable={false}
     >
-      <h2 className="text-[2.6rem] pb-12 md:pb-0 md:text-7xl lg:text-9xl font-extrabold tracking-wide md:tracking-widest uppercase select-none">
-        welcome TO FAT OWL!
+      <h2 className="text-[2.4rem] pb-12 md:pb-0 md:text-6xl lg:text-8xl font-extrabold tracking-wide md:tracking-widest uppercase select-none">
+        {info.title}
       </h2>
       <h3 className="about-title ease-in-out text-6xl font-extrabold tracking-wider uppercase select-none">
         {info.subtitle}

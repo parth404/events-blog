@@ -17,14 +17,7 @@ function Header() {
       <div className="fixed top-0 flex justify-between items-center h-14 w-full max-w-[1920px] mx-auto uppercase z-50 md:mix-blend-difference">
         <div className=" text-white">
           <Link className="flex items-center m-4" href="/">
-            <Image
-              className="rounded-full"
-              src="/OWLNOBG.png"
-              width={30}
-              height={30}
-              alt="logo"
-            />
-            <h1 className="px-2 text-xl w-full font-bold">FAT OWL.</h1>
+            <h1 className="text-xl w-full font-bold">TECHNODELIC</h1>
           </Link>
         </div>
         <div>
@@ -62,20 +55,26 @@ function Header() {
         >
           <div className="w-[60%] bg-[#0e0d0d]">
             <Link className="flex items-center m-4" href="/">
-              <Image
-                className="rounded-full"
-                src="/logo.png"
-                width={50}
-                height={50}
-                alt="logo"
-              />
-              <h1 className="text-2xl w-full font-bold text-white">FAT OWL.</h1>
+              <h1 className="text-2xl w-full font-bold text-white uppercase">
+                technodelic
+              </h1>
             </Link>
-            <ul className="uppercase p-4 text-white">
-              <li className="p-4 border-b border-gray-600">Events</li>
-              <li className="p-4 border-b border-gray-600">Gallery</li>
-              <li className="p-4 border-b border-gray-600">About</li>
-              <li className="p-4">Contact</li>
+            <ul
+              className="uppercase p-4 text-white"
+              onClick={() => setNav(!nav)}
+            >
+              <a href="/#about">
+                <li className="p-4 border-b border-gray-600">About</li>
+              </a>
+              <a href="/#gallery">
+                <li className="p-4 border-b border-gray-600">Gallery</li>
+              </a>
+              <a href="/#events">
+                <li className="p-4 border-b border-gray-600">Events</li>
+              </a>
+              <a href="/#contact">
+                <li className="p-4">Contact</li>
+              </a>
             </ul>
           </div>
           <div className=" w-[40%] bg-black/50 "></div>

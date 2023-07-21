@@ -11,13 +11,13 @@ function EventList({ events }: Props) {
   return (
     <div
       id="events"
-      className="max-w-contentContainer px-5 py-10 md:pt-24 mx-auto select-none"
+      className="max-w-contentContainer px-5 md:py-10 md:pt-24 mx-auto select-none"
       draggable={false}
     >
       <h1 className="text-white py-12 font-poppins text-3xl md:text-6xl font-extrabold tracking-wider uppercase">
         events
       </h1>
-      <div className="grid py-2 grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24">
+      <div className="grid py-2 grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 md:pb-24">
         {events.map((event) => (
           <ClientSideRoute
             key={event._id}
@@ -35,7 +35,7 @@ function EventList({ events }: Props) {
                   <div>
                     <p className="font-bold text-ellipsis">{event.title}</p>
                     <p>
-                      {new Date(event._createdAt).toLocaleDateString("en-US", {
+                      {new Date(event.date).toLocaleDateString("en-US", {
                         day: "numeric",
                         month: "long",
                         year: "numeric",

@@ -18,12 +18,42 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  background-color: #000000;
   background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 255, 0.3) 0%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    /* niebieski */
+      radial-gradient(
+        ellipse at center,
+        rgba(255, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0) 70%
+      ),
+    /*czerwony */
+      radial-gradient(
+        ellipse at center,
+        rgba(0, 255, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0) 70%
+      ),
+    radial-gradient(
+      circle at 24.1% 68.8%,
+      rgb(15, 15, 15) 0%,
+      rgb(0, 0, 0) 100%
+    ),
+    /*zielony */ #000000;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: 900px 900px, 900px 900px, 900px 900px, 100% 100%;
+  background-attachment: fixed;
+
+  animation: bganimation 30s infinite;
+
+  /* background: radial-gradient(
     circle at 24.1% 68.8%,
     rgb(15, 15, 15) 0%,
     rgb(0, 0, 0) 100%
   );
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   /* background: #141414; */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
@@ -74,4 +104,16 @@ body {
   height: 56vmin;
   object-fit: cover;
   object-position: 100% center;
+}
+
+@keyframes bganimation {
+  0% {
+    background-position: -100% -100%, 200% 200%, -100% 200%, 200% -100%;
+  }
+  50% {
+    background-position: 150% 100%, -200% 100%, 100% 0%, 0% 100%;
+  }
+  100% {
+    background-position: -100% -100%, 200% 200%, -100% 200%, 200% -100%;
+  }
 }

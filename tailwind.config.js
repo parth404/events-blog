@@ -52,6 +52,19 @@ module.exports = {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        bganimation: {
+          "0%": {
+            "background-position":
+              "-100% -100%, 200% 200%,-100% 200%,200% -100%",
+          },
+          "50%": {
+            " background-position": "150% 100%, -200% 100%, 100% 0%,0% 100%",
+          },
+          "100%": {
+            "background-position":
+              "-100% -100%, 200% 200%, -100% 200%, 200% -100%",
+          },
+        },
       },
       animation: {
         marquee: "marquee 35s linear infinite",
@@ -59,6 +72,7 @@ module.exports = {
         marquee3: "marquee3 15s linear infinite",
         marquee4: "marquee4 15s linear infinite",
         bounce: "bounce 2s infinite",
+        bganimation: "bganimation 30s infinite",
       },
     },
     plugins: [require("@tailwindcss/line-clamp")],

@@ -4,7 +4,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="h-[40rem] w-full flex md:justify-center md:text-center items-center"
+      className="p-5 h-[30rem] md:h-[40rem] w-full flex md:justify-center md:text-center items-center"
     >
       <div className="max-w-contentContainer text-white">
         <h1 className="select-none text-3xl  md:text-6xl lg:text-7xl max-w-contentContainer mx-auto font-extrabold tracking-wide md:tracking-widest uppercase">

@@ -9,6 +9,7 @@ type Props = {
 function About({ about }: Props) {
   return about.map((info) => (
     <section
+      key={info._id}
       id="about"
       className="min-h-screen relative px-5 max-w-contentContainer mx-auto py-10 md:py-40 md:px-10 xl:px-4 text-white font-poppins"
       draggable={false}

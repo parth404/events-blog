@@ -13,12 +13,12 @@ function Contact({ socials }: Props) {
           get in touch
         </h1>
         <p className="md:text-xl max-w-4xl tracking-wider select-none py-12">
-          Hello there! We're thrilled to have you here. Our virtual door is wide
-          open for you, so don't be shy—drop us a line anytime! Have a question?
-          Need assistance? Or simply want to share your thoughts? We're all ears
-          and can't wait to hear from you.
+          Hello there! We&apos;re thrilled to have you here. Our virtual door is
+          wide open for you, so don&apos;t be shy—drop us a line anytime! Have a
+          question? Need assistance? Or simply want to share your thoughts?
+          We&apos;re all ears and can&apos;t wait to hear from you.
         </p>
-        <a href={socials[0].mail}>
+        <a href={`mailto:${socials[0].mail}`}>
           <button className="uppercase text-white font-poppins font-bold tracking-wide text-2xl bg-black/20 p-3 hover:scale-110 transition-transform ease-in-out duration-300 hover:bg-white hover:text-black hover:border-transparent shadow-white shadow-md border-2 ">
             say hello
           </button>

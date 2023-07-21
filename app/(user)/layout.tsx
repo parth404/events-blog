@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
-import "../globals.css";
 import { Suspense } from "react";
 import Loader from "./Loader";
+import "../globals.css";
 
 export const metadata = {
   title: "Technodelic",
@@ -15,10 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-transparent font-poppins">
-        <Header />
-        {children}
-      </body>
+      <Suspense fallback={<Loader />}>
+        <body className="bg-transparent font-poppins">
+          <Header />
+          {children}
+        </body>
+      </Suspense>
     </html>
   );
 }

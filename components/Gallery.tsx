@@ -122,7 +122,7 @@ function Gallery({ gallery }: Props) {
     } else {
       setShowRight(false);
     }
-  }, [imageKey, setShowLeft, setShowRight]);
+  }, [imageKey, setShowLeft, setShowRight, gallery.length]);
 
   const clickHandler = (key: number, image: string) => {
     setImage(image);

@@ -95,3 +95,13 @@ interface Description {
   _type: "string";
   current: string;
 }
+
+interface Rule<ExtendingRule, Value> {
+  custom: (
+    validator: (value: Value, context: unknown) => MaybePromise<false | string>
+  ) => ExtendingRule;
+  error: (message: string) => ExtendingRule;
+  required: () => ExtendingRule;
+  valueOfField: (field: string) => unknown;
+  warning: (message: string) => ExtendingRule;
+}

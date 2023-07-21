@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { Suspense } from "react";
 import Loader from "./Loader";
 
+export const revalidate = 20; // revalidate this page every 60 seconds
 const query = groq`*[_type=='events']{
   ...,
 } | order(date desc)`;

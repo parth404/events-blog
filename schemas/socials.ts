@@ -22,7 +22,7 @@ const socials = {
     {
       name: "mail",
       title: "Mail",
-      type: "url",
+      type: "string",
     },
   ],
 };

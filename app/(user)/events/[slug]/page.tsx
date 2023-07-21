@@ -10,6 +10,8 @@ import {
   ArrowLongRightIcon,
 } from "@heroicons/react/24/solid";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
+import Loader from "../../Loader";
 
 type Props = {
   params: {
@@ -33,63 +35,66 @@ async function Events({ params: { slug } }: Props) {
   const event: Post = await client.fetch(query, { slug });
 
   return (
-    <div className="w-full bg-black select-none">
-      <article className="px-4 py-28 h-full md:max-w-contentContainer mx-auto text-[#c7c7c7] font-poppins">
-        <section className="space-y-2 h-40 md:h-[20rem] md:mb-24">
-          <div className="relative md:min-h-full flex flex-col md:flex-row justify-between">
-            <div className="absolute top-0 w-full h-full p-10">
-              <Image
-                className="object-cover object-center mx-auto brightness-75 sepia-[30%]"
-                src={urlFor(event.hero_image).url()}
-                alt={event.hero_image.alt}
-                fill
-              />
+    <Suspense fallback={<Loader />}>
+      <div className="w-full bg-black select-none">
+        <article className="px-4 py-28 h-full md:max-w-contentContainer mx-auto text-[#c7c7c7] font-poppins">
+          <section className="space-y-2 h-40 md:h-[20rem] md:mb-24">
+            <div className="relative md:min-h-full flex flex-col md:flex-row justify-between">
+              <div className="absolute top-0 w-full h-full p-10">
+                <Image
+                  className="object-cover object-center mx-auto brightness-75 sepia-[30%]"
+                  src={urlFor(event.hero_image).url()}
+                  alt={event.hero_image.alt}
+                  fill
+                />
+              </div>
+              <section className=" p-5 md:p-8 bg-black/20 w-full z-10 backdrop-blur-sm backdrop-brightness-75">
+                <div className="flex flex-col md:flex-row my-5 md:my-24 justify-between gap-y-3 md:gap-y-5">
+                  <div>
+                    <h1 className="text-xl md:text-4xl font-extrabold text-white font-poppins capitalize md:pb-4">
+                      {event.title}
+                    </h1>
+                    <p className="text-sm md:text-xl text-[#c7c7c7]">
+                      {event.date}
+                    </p>
+                  </div>
+                  <div className="text-sm md:text-2xl text-white font-extrabold font-poppins capitalize md:pb-4">
+                    <p>{event.venue}</p>
+                  </div>
+                </div>
+              </section>
             </div>
-            <section className=" p-5 md:p-8 bg-black/20 w-full z-10 backdrop-blur-sm backdrop-brightness-75">
-              <div className="flex flex-col md:flex-row my-5 md:my-24 justify-between gap-y-3 md:gap-y-5">
-                <div>
-                  <h1 className="text-xl md:text-4xl font-extrabold text-white font-poppins capitalize md:pb-4">
-                    {event.title}
-                  </h1>
-                  <p className="text-sm md:text-xl text-[#c7c7c7]">
-                    {event.date}
-                  </p>
+          </section>
+          <PortableText value={event.content} components={RichTextComponents} />
+          <div className="flex w-full gap-6 underline justify-between flex-row mt-20 text-[#c7c7c7] text-xs tracking-wide uppercase font-poppins md:text-lg">
+            {event.prev && (
+              <ClientSideRoute
+                key={event._id}
+                route={`/events/${event.prev.slug}`}
+              >
+                <div className="flex max-w-36 gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500">
+                  <ArrowLongLeftIcon width={36} />
+                  <span>{event.prev.title}</span>
                 </div>
-                <div className="text-sm md:text-2xl text-white font-extrabold font-poppins capitalize md:pb-4">
-                  <p>{event.venue}</p>
+              </ClientSideRoute>
+            )}
+            {event.next && (
+              <ClientSideRoute
+                key={event._id}
+                route={`/events/${event.next.slug}`}
+              >
+                <div className="flex max-w-36 gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500 ">
+                  <span>{event.next.title}</span>
+                  <ArrowLongRightIcon width={36} />
                 </div>
-              </div>
-            </section>
+              </ClientSideRoute>
+            )}
           </div>
-        </section>
-        <PortableText value={event.content} components={RichTextComponents} />
-        <div className="flex w-full gap-6 underline justify-between flex-row mt-20 text-[#c7c7c7] text-xs tracking-wide uppercase font-poppins md:text-lg">
-          {event.prev && (
-            <ClientSideRoute
-              key={event._id}
-              route={`/events/${event.prev.slug}`}
-            >
-              <div className="flex max-w-36 gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500">
-                <ArrowLongLeftIcon width={36} />
-                <span>{event.prev.title}</span>
-              </div>
-            </ClientSideRoute>
-          )}
-          {event.next && (
-            <ClientSideRoute
-              key={event._id}
-              route={`/events/${event.next.slug}`}
-            >
-              <div className="flex max-w-36 gap-2 md:gap-4 items-center hover:text-white hover:scale-105 transition-transform duration-500 ">
-                <span>{event.next.title}</span>
-                <ArrowLongRightIcon width={36} />
-              </div>
-            </ClientSideRoute>
-          )}
-        </div>
-      </article>
-      <Footer />
-    </div>
+        </article>
+        {/* @ts-expect-error Server Component */}
+        <Footer />
+      </div>
+    </Suspense>
   );
 }
 

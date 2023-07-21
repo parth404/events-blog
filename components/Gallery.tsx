@@ -85,21 +85,25 @@ function Gallery({ gallery }: Props) {
       };
 
       window.addEventListener("mousedown", handleOnDown);
+      // @ts-expect-error
       window.addEventListener("touchstart", (e) => handleOnDown(e.touches[0]));
       window.addEventListener("mouseup", handleOnUp);
       window.addEventListener("touchend", handleOnUp);
       window.addEventListener("mousemove", handleOnMove);
+      // @ts-expect-error
       window.addEventListener("touchmove", (e) => handleOnMove(e.touches[0]));
 
       return () => {
         window.removeEventListener("mousedown", handleOnDown);
         window.removeEventListener("touchstart", (e) =>
+          // @ts-expect-error
           handleOnDown(e.touches[0])
         );
         window.removeEventListener("mouseup", handleOnUp);
         window.removeEventListener("touchend", handleOnUp);
         window.removeEventListener("mousemove", handleOnMove);
         window.removeEventListener("touchmove", (e) =>
+          // @ts-expect-error
           handleOnMove(e.touches[0])
         );
       };

@@ -83,6 +83,14 @@ interface Title {
   current: string;
 }
 
+interface Socials extends Base {
+  _type: "string";
+  facebook: string;
+  instagram: string;
+  youtube: string;
+  mail: string;
+}
+
 interface Description {
   _type: "string";
   current: string;

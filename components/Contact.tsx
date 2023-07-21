@@ -1,6 +1,8 @@
-import React from "react";
+type Props = {
+  socials: Socials[];
+};
 
-function Contact() {
+function Contact({ socials }: Props) {
   return (
     <section
       id="contact"
@@ -16,7 +18,7 @@ function Contact() {
           Need assistance? Or simply want to share your thoughts? We're all ears
           and can't wait to hear from you.
         </p>
-        <a href="mailto:b16390@gmail.com">
+        <a href={socials[0].mail}>
           <button className="uppercase text-white font-poppins font-bold tracking-wide text-2xl bg-black/20 p-3 hover:scale-110 transition-transform ease-in-out duration-300 hover:bg-white hover:text-black hover:border-transparent shadow-white shadow-md border-2 ">
             say hello
           </button>

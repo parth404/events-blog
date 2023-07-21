@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import "../globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Suspense } from "react";
+import Loader from "./Loader";
 
 export const metadata = {
   title: "Technodelic",

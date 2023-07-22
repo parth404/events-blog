@@ -14,7 +14,7 @@ type Props = {
 function Hero({ events, socials }: Props) {
   return (
     <>
-      <div className="hidden md:flex md:items-center md:justify-center h-screen bg-transparent z-20">
+      <div className="hidden md:flex md:items-center md:justify-center h-full bg-transparent z-20">
         <div className="md:w-full md:h-full">
           <div className="hidden md:flex [&:hover>div]:w-[18rem] [&>div:hover]:w-full">
             {events.slice(0, 4).map((event) => (
@@ -271,11 +271,11 @@ function Hero({ events, socials }: Props) {
           </div>
         </div>
         <div className="mobile-title">
-          <h2 className="text-4xl pt-4 backdrop-brightness-50 uppercase z-10 tracking-widest bg-gradient-to-b from-black/80 via-black/5 to-black flex flex-col justify-center w-full text-center h-full font-extrabold">
+          <h2 className="text-4xl pt-4 backdrop-brightness-[30%] uppercase z-10 tracking-widest flex flex-col justify-center w-full text-center h-screen font-extrabold">
             technodelic
           </h2>
         </div>
-        <ArrowLongDownIcon className="absolute bottom-2 h-8 text-white z-10 animate-bounce" />
+        <ArrowLongDownIcon className="absolute bottom-12 h-8 text-white z-10 animate-bounce" />
       </div>
     </>
   );

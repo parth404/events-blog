@@ -1,6 +1,6 @@
 "use client";
 
-import { definePreview } from "next-sanity/preview";
+// import { definePreview } from "next-sanity/preview";
 import { projectId, dataset } from "../../lib/sanity.client";
 
 function onPublicAccessOnly() {
@@ -13,8 +13,8 @@ if (!projectId || !dataset) {
   );
 }
 
-export const usePreview = definePreview({
+export const usePreview = {
   projectId,
   dataset,
   onPublicAccessOnly,
-});
+};

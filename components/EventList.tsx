@@ -6,6 +6,7 @@ import ClientSideRoute from "./ClientSideRoute";
 type Props = {
   events: Post[];
 };
+export const revalidate = 20; // revalidate this page every 60 seconds
 
 function EventList({ events }: Props) {
   return (

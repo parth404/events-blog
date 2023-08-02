@@ -79,6 +79,7 @@ body {
 
 .about-title {
   color: transparent;
+  font-family: "Poppins";
   -webkit-text-stroke: 2px rgb(156 163 175);
 }
 

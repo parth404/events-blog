@@ -2,6 +2,8 @@ import urlFor from "@/lib/urlFor";
 import Image from "next/image";
 // import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 
+export const revalidate = 60; // revalidate this page every 60 seconds
+
 type Props = {
   about: Info[];
 };

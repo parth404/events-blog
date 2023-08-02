@@ -1,6 +1,7 @@
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 
+export const revalidate = 20; // revalidate this page every 60 seconds
 const socialQuery = groq`*[_type=='socials']{
   ...,
 }`;

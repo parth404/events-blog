@@ -10,11 +10,11 @@ import {
   ArrowLongLeftIcon,
 } from "@heroicons/react/24/solid";
 
-// let track = null;
-
 type Props = {
   gallery: Gallery[];
 };
+
+export const revalidate = 20; // revalidate this page every 60 seconds
 
 function Gallery({ gallery }: Props) {
   const [image, setImage] = useState("/");
@@ -58,7 +58,8 @@ function Gallery({ gallery }: Props) {
             -100
           );
 
-        track.dataset.percentage = nextPercentage.toString();
+        track.dataset.percentage =
+          nextPercentage.toString() === "NaN" ? "0" : nextPercentage.toString();
 
         const translateX = isNaN(nextPercentage) ? 0 : `${nextPercentage}%`;
 
